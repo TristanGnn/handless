@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Fonts locales — Switzer (titres) / Satoshi (labels) / Supreme (texte) */
+/* ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Black.woff2") format("woff2"),
+    url("/fonts/Switzer-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Medium.woff2") format("woff2"),
+    url("/fonts/Satoshi-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Supreme";
+  src: url("/fonts/Supreme-Medium.woff2") format("woff2"),
+    url("/fonts/Supreme-Medium.woff") format("woff");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                       */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  --color-primary: #0f172a;
+  --color-on-primary: #ffffff;
+  --color-secondary: #334155;
+  --color-accent: #0369a1;
+  --color-background: #f8fafc;
+  --color-foreground: #020617;
+  --color-muted: #e8ecf1;
+  --color-border: #e2e8f0;
+  --color-destructive: #dc2626;
+  --color-neon: #38bdf8;
+
+  /* nuances utilitaires du mode sombre */
+  --color-night: #020617;
+  --color-slate-soft: #cbd5e1;
+  --color-slate-dim: #94a3b8;
+  --color-line: rgba(148, 163, 184, 0.16);
+  --color-card: rgba(15, 23, 42, 0.72);
+
+  --font-title: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Supreme", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-night);
+  color: var(--color-on-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-neon);
+  color: var(--color-night);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-neon);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Décors                                                              */
+/* ------------------------------------------------------------------ */
+
+/* grille technique en fond de section */
+.bg-grid {
+  background-image: linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.mask-fade-edges {
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 100%);
+}
+
+.mask-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Marquee logos                                                       */
+/* ------------------------------------------------------------------ */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.marquee-group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Lien nav : underline animée                                         */
+/* ------------------------------------------------------------------ */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1.5px;
+  width: 0;
+  background-color: var(--color-neon);
+  transition: width 200ms ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}

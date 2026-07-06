@@ -1,0 +1,32 @@
+/**
+* @license
+*
+* Font Family: Switzer
+* Designed by: Jérémie Hornus
+* URL: https://www.fontshare.com/fonts/switzer
+* © 2026 Indian Type Foundry
+*
+* Switzer Black 
+* Switzer BlackItalic 
+
+*
+*/
+@font-face {
+  font-family: 'Switzer-Black';
+  src: url('../fonts/Switzer-Black.woff2') format('woff2'),
+       url('../fonts/Switzer-Black.woff') format('woff'),
+       url('../fonts/Switzer-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Switzer-BlackItalic';
+  src: url('../fonts/Switzer-BlackItalic.woff2') format('woff2'),
+       url('../fonts/Switzer-BlackItalic.woff') format('woff'),
+       url('../fonts/Switzer-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: italic;
+}
+
