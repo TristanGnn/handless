@@ -20,27 +20,12 @@ const WORKFLOW_STEPS = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-night pt-32 pb-20 md:pt-44 md:pb-28">
-      {/* décor : grille technique + halos */}
+      {/* décor : grille technique */}
       <div className="bg-grid mask-fade-edges absolute inset-0" aria-hidden />
-      <div
-        className="absolute -top-40 left-1/4 h-[480px] w-[480px] rounded-full bg-accent/25 blur-[140px]"
-        aria-hidden
-      />
-      <div
-        className="absolute top-1/3 -right-32 h-[420px] w-[420px] rounded-full bg-neon/15 blur-[140px]"
-        aria-hidden
-      />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 md:px-8 lg:grid-cols-[1.1fr_1fr]">
         {/* colonne texte */}
         <div>
-          <FadeIn>
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-primary/60 px-4 py-1.5 font-label text-xs tracking-wide text-slate-soft">
-              <span className="h-1.5 w-1.5 rounded-full bg-neon" aria-hidden />
-              Agence IA — Wallonie, Belgique
-            </p>
-          </FadeIn>
-
           <TextReveal
             as="h1"
             text="L'automatisation IA pour les entreprises wallonnes"

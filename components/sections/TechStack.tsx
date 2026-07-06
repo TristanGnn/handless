@@ -62,7 +62,6 @@ export function TechStack() {
       />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          eyebrow="Stack technologique"
           title="Des outils éprouvés, assemblés sur mesure"
           highlight={["éprouvés,"]}
           description="Pas de boîte noire : chaque automatisation repose sur des technologies reconnues, que vous pouvez auditer."

@@ -180,7 +180,6 @@ export function HowItWorks() {
             <div>
               <SectionHeading
                 align="left"
-                eyebrow="Comment ça fonctionne"
                 title="Une méthode simple, un résultat mesurable"
                 highlight={["simple,"]}
                 className="mb-10"
@@ -240,7 +239,6 @@ export function HowItWorks() {
       {/* version mobile : liste verticale */}
       <div className="px-5 py-24 lg:hidden">
         <SectionHeading
-          eyebrow="Comment ça fonctionne"
           title="Une méthode simple, un résultat mesurable"
           highlight={["simple,"]}
         />

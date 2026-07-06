@@ -111,7 +111,6 @@ export function Targets() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
           light
-          eyebrow="Pour qui ?"
           title="Conçu pour les métiers qui croulent sous l'admin"
           highlight={["métiers"]}
           description="Nous travaillons avec les indépendants et PME de Wallonie dont le quotidien déborde de tâches répétitives."

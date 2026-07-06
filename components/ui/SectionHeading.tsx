@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/animations/FadeIn";
 import { TextReveal } from "@/components/animations/TextReveal";
 
 interface SectionHeadingProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   highlight?: string[];
   description?: string;
@@ -30,16 +30,18 @@ export function SectionHeading({
         className
       )}
     >
-      <FadeIn>
-        <p
-          className={cn(
-            "font-label text-xs uppercase tracking-[0.28em]",
-            light ? "text-accent" : "text-neon"
-          )}
-        >
-          {eyebrow}
-        </p>
-      </FadeIn>
+      {eyebrow && (
+        <FadeIn>
+          <p
+            className={cn(
+              "font-label text-xs uppercase tracking-[0.28em]",
+              light ? "text-accent" : "text-neon"
+            )}
+          >
+            {eyebrow}
+          </p>
+        </FadeIn>
+      )}
       <TextReveal
         text={title}
         highlight={highlight}

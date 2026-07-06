@@ -84,7 +84,6 @@ export function Services() {
       />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          eyebrow="Nos services"
           title="Six façons de reprendre votre temps"
           highlight={["temps"]}
           description="Des automatisations concrètes, conçues pour les métiers wallons, opérationnelles en quelques semaines."

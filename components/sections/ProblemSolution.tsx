@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { SlideUp } from "@/components/animations/SlideUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 import { AlarmClockIcon } from "@/components/icons/alarm-clock";
@@ -72,7 +73,11 @@ function PointList({ points, tone }: { points: Point[]; tone: "problem" | "solut
         const Icon = point.icon;
         return (
           <StaggerItem key={point.title}>
-            <div className="flex gap-4">
+            <motion.div
+              className="flex cursor-default gap-4"
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
               <span
                 className={
                   tone === "problem"
@@ -86,7 +91,7 @@ function PointList({ points, tone }: { points: Point[]; tone: "problem" | "solut
                 <h3 className="font-label text-lg text-foreground">{point.title}</h3>
                 <p className="mt-1 leading-relaxed text-secondary">{point.text}</p>
               </div>
-            </div>
+            </motion.div>
           </StaggerItem>
         );
       })}
@@ -100,7 +105,6 @@ export function ProblemSolution() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
           light
-          eyebrow="Le constat"
           title="Votre journée est mangée par l'administratif"
           highlight={["administratif"]}
           description="En Belgique, 70 % des TPE n'ont jamais envisagé l'IA (SPF Économie, 2025). Celles qui s'y mettent prennent une longueur d'avance décisive."
