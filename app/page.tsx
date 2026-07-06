@@ -1,3 +1,4 @@
+import { SectionReveal } from "@/components/animations/SectionReveal";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -16,7 +17,9 @@ export default function Home() {
       <main>
         <Hero />
         <LogoMarquee />
-        <ProblemSolution />
+        <SectionReveal>
+          <ProblemSolution />
+        </SectionReveal>
         <Services />
         <HowItWorks />
         <Targets />

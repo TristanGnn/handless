@@ -157,7 +157,7 @@ function AnimatedLogo({
     { ease: [linear, easeInOut, linear, easeOut, linear] }
   );
 
-  const opacity = useTransform(scrollProgress, [0, 0.08, 0.6, 0.75, 1], [1, 1, 1, 0, 0]);
+  const opacity = useTransform(scrollProgress, [0, 0.08, 0.6, 0.8, 1], [1, 1, 1, 0, 0]);
 
   const scale = useTransform(
     scrollProgress,
@@ -202,9 +202,11 @@ export function LogoMarquee() {
   const radius = isMobile ? 130 : 190;
   const spacing = isMobile ? 80 : 130;
 
+  // "end start" : la progression atteint ~0.64 quand la section suivante
+  // entre dans le viewport par le bas, pendant que les logos s'effacent
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
 
   // la barre compacte s'étend pour accueillir le cercle, puis se replie
@@ -265,32 +267,41 @@ export function LogoMarquee() {
   }
 
   return (
-    <section ref={sectionRef} className="relative h-[400vh]" aria-label="Technologies utilisées">
+    <section
+      ref={sectionRef}
+      className="relative h-[280vh] bg-background"
+      aria-label="Technologies utilisées"
+    >
+      {/* la barre colle en haut du viewport et s'étend vers le bas uniquement */}
       <motion.div
         style={{ height: stickyHeight }}
-        className="sticky top-0 flex items-center justify-center overflow-hidden bg-primary"
+        className="sticky top-0 overflow-hidden bg-primary"
       >
         {/* liseré haut, fixe */}
         <div className="absolute inset-x-0 top-0 h-px bg-line" aria-hidden />
 
-        <motion.p
-          style={{ opacity: labelOpacity }}
-          className="absolute top-6 left-1/2 -translate-x-1/2 whitespace-nowrap font-label text-[11px] uppercase tracking-[0.28em] text-slate-dim"
-        >
-          Nous construisons avec les meilleurs outils
-        </motion.p>
+        {/* bande compacte : label + marquee restent dans les 120 px du haut */}
+        <div className="absolute inset-x-0 top-0 flex items-center" style={{ height: COMPACT_H }}>
+          <motion.p
+            style={{ opacity: labelOpacity }}
+            className="absolute top-6 left-1/2 -translate-x-1/2 whitespace-nowrap font-label text-[11px] uppercase tracking-[0.28em] text-slate-dim"
+          >
+            Nous construisons avec les meilleurs outils
+          </motion.p>
 
-        {/* phase 1 : marquee horizontal défilant */}
-        <motion.div
-          style={{ opacity: marqueeOpacity }}
-          className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2"
-          aria-hidden
-        >
-          <MarqueeRow />
-        </motion.div>
+          {/* phase 1 : marquee horizontal défilant */}
+          <motion.div
+            style={{ opacity: marqueeOpacity }}
+            className="pointer-events-none w-full"
+            aria-hidden
+          >
+            <MarqueeRow />
+          </motion.div>
+        </div>
 
-        {/* phases 2-3 : container rotatif centré (0×0), logos autour de l'origine */}
+        {/* phases 2-3 : container rotatif (0×0) centré dans la zone élargie */}
         <motion.div
+          className="absolute top-1/2 left-1/2"
           style={{
             opacity: logosWrapperOpacity,
             rotate: wrapperRotation,
